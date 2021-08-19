@@ -1,0 +1,114 @@
+
+01. first 5 entries from movies table
+
+Ans) select * from movies limit 5;
+
+02. number of unique movies
+
+Ans)  SELECT COUNT ( DISTINCT title ) AS UNIQUE_MOVIES from movies; 
+
+03. summary of ratings data
+
+Ans) desc ratings;
+
+04. minimum rating given to a movie
+
+Ans) SELECT MIN(rating) from ratings
+
+05. maximum rating given to a movie
+
+Ans) SELECT MAX(rating) from ratings
+
+06. is any row null in tags
+
+Ans)  SELECT * FROM tags where tags.userId = NULL OR tags.movieid=NULL OR tags.tag=NULL OR tags.timestamps=NULL;
+
+07. number of unique tags 
+
+Ans) SELECT COUNT ( DISTINCT tag ) AS UNIQUE_TAGS from tags;
+
+08. drop null rows from tags and create another table of the resulting rows
+
+Ans) create table result1 AS select * from tags where movieId IS NOT NULL OR userId IS NOT NULL OR tagId IS NOT NOT NULL OR times IS NOT NULL;
+
+09. filtering to get the list of drama movies
+
+Ans) select * from movies where genres LIKE 'Drama%'; 
+
+10. total number of drama movies
+
+Ans) SELECT COUNT ( title ) from movies where genres='Drama';
+
+11. filtering to get the list of comedy movies
+
+Ans) select * from movies where genres RLIKE 'Comedy';
+
+12. total no. of comedy movies
+
+Ans)  SELECT COUNT(genres) from movies where genres RLIKE 'Comedy';  
+
+13. search movie id by tag search
+
+Ans) SELECT movieid, tag
+FROM tags
+WHERE tag == 'netflix';
+
+14. displays first 5 data from ratings table
+
+Ans)  select * from ratings limit 5;  
+
+15. merging two tables movies and ratings into a new table without the "timestamp" column from the ratings table.
+
+Ans) create table data AS Select movies.movieid, movies.title, movies.genres, ratings.userid, ratings.rating FROM movies FULL OUTER JOIN ratings ON movies.movieid=ratings.movieid;
+
+16. display high rated movies (rating > 4)
+
+Ans) SELECT m.title, r.rating from movies m INNER JOIN ratings r ON m.movieId=r.movieId where r.rating > 4
+
+17. display low rated movies (rating < 4)
+
+Ans) SELECT m.title, r.rating from movies m INNER JOIN ratings r ON m.movieId = r.movieId where r.rating < 4
+
+18. total number of unique movie genres
+
+Ans) select COUNT(DISTINCT genres) from movies ;
+
+19. top 25 most rated movies
+
+Ans) SELECT title, avg(rating) as Most_Rated_Movies
+FROM movies m
+inner join ratings r
+ON m.movieId=r.movieId
+GROUP BY title
+ORDER BY Most_Rated_Movies DESC
+LIMIT 25;
+
+SELECT title, avg(rating) as Most_Rated_Movies, count(r.rating)
+FROM movies m
+inner join ratings r
+ON m.movieId=r.movieId
+GROUP BY m.title, r.rating
+ORDER BY Most_Rated_Movies DESC
+LIMIT 25;
+
+20. slicing out columns to display only title and genres columns from movies table
+
+Ans) select title, genres from movies;
+
+21. extract year from title of the movie
+
+Ans) select movieId, substr(split(title, '\\(')[1], 0, 4) AS Movie_Year FROM movies LIMIT 10;
+
+22. count how many times each of genres occur
+
+Ans) SELECT m.genres, COUNT(genres) FROM movies m GROUP BY m.genres;
+ 
+23. Which movie received the highest number of ratings?
+
+Ans)SELECT m.title, count(r.rating) AS NumberOfRatings
+From movies as m
+inner join ratings as r
+on m.movieId=r.movieId
+Group by title
+ORDER BY NumberOfRatings DESC
+LIMIT 1;
