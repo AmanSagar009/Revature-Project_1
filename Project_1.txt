@@ -1,3 +1,19 @@
+-> WAY TO UPLOAD FILES
+
+1. clone the git repository using git clone <link> in our local system
+2. load ""sudo yum install unzip"" - Used to install unzip to unzip the zip files.
+3. unzip files using "" unzip <file_name.csv.zip> "" - Used to unzip the zip files.
+4. Make dir in hdfs using hdfs dfs -mkdir </path to hdfs in which dir is created>
+5. Move the unzip files (i.e .csv files) inside the dir.
+6. put files in hdfs "" hdfs dfs -put ./<filename.csv> /user/maria_dev/movie ""
+7. go to ambari --> hive view --> upload table( /user/maria_dev/<dir_name>/<file_name>)
+8 . gitbash --> hive --> create database demo1; --> use demo1; 
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+					QUESTION AND QUERIES
+
 
 01. first 5 entries from movies table
 
