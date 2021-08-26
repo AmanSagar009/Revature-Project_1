@@ -1,11 +1,13 @@
 # Project_1: Analyze MovieLens data
 ## Project Description
 Import csv data about movies and their ratings into HDFS, then create tables from the imported files in Hive. Once imported, create queries to analyze and display data about the movies and their ratings. For e.g.; display first 5 entries from movies table, count number of unique movies, Which movie received the highest number of ratings, top 25 most rated movies etc.
+
 ## Technology Stack
 * Hive
 * HDFS
 * Hadoop
 * Git + Github
+
 # Getting Started
 Github clone URL: https://github.com/AmanSagar009/Revature-Project_1.git
 
@@ -68,7 +70,18 @@ Performing the above action you are enter to VM CLI then do the following comman
 * After unzip all the file create a folder in hdfs using command which is little bit difference before we tried while creating folder is "hdfs dfs -mkdir folder_name" (By default this folder created in the path user/maria_dev/ ) and copy all file to the hdfs folder by ""hdfs dfs -put file-name /user/maria_dev/folder_name".
 * To open HiveQL terminal we have have to give command "Hive".
 * Before performing all the above action try to check whether your Ambari which is management platform for hadoop started all services or not.
-* In hive terminal ,check database and if not create one and use the database using following command and after creating database create tables and load data from the folder in hdfs to the respected table and perform analysis using the query which are mention the txt file "project_1_command.txt" 
+* In hive terminal ,check database and if not create one and use the database using following command and after creating database create tables and load data from the folder in hdfs to the respected table and perform analysis using the query which are mention the txt file "Project_1.txt" 
+
+** WAY TO UPLOAD FILES
+
+* clone the git repository using git clone <link> in our local system
+* load ""sudo yum install unzip"" - Used to install unzip to unzip the zip files.
+* unzip files using "" unzip <file_name.csv.zip> "" - Used to unzip the zip files.
+* Make dir in hdfs using hdfs dfs -mkdir </path to hdfs in which dir will be created>
+* Move the unzip files (i.e .csv files) inside the dir.
+* put files in hdfs "" hdfs dfs -put ./<filename.csv> /user/maria_dev/movie ""
+* go to ambari --> hive view --> upload table( /user/maria_dev/<dir_name>/<file_name>)
+* gitbash --> hive --> create database demo1; --> use demo1; 
 
 ### For creating database  
 create database demo1;
@@ -77,20 +90,7 @@ create database demo1;
 ### For work in the database
 use demo1;
 
-
-### create table
-
-	CREATE TABLE movies (movieId int, title string, genres varchar(200))
-	row format delimited
-	fields terminated by ',';
-
-### load data into table
-
-	LOAD DATA INPATH '/user/maria_dev/project_1/movies.csv'
-	INTO TABLE project1.movies;
-
-The above Query are for creating table and load data in it,after loading data to the table all data from the hdfs folder are automatically removed i.e they are now loaded in the respective tables. 
-
+I had created the tables directly from the ambari hive view and load all the files in their respective tables.
 
 ## Usage
 
