@@ -5,3 +5,6 @@ Import csv data about movies and their ratings into HDFS, then create tables fro
 * Hive
 * HDFS
 * Hadoop
+* Git + Github
+# Getting Started
+Github clone URL: 
