@@ -1,1 +1,2 @@
-# Revature-Project_1
+# Project_1: Analyze MovieLens data
+## Project Description
